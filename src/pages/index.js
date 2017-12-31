@@ -142,8 +142,7 @@ const Index = ({ data }: Props) => {
       <HireMe>
         <Dot />
         <HireMeText>
-          I{"'"}m available for hire.{' '}
-          <a href="mailto:mail@larsgraubner.de">Learn more</a>.
+          I{"'"}m available for hire. <Link to="/hireme/">Learn more</Link>.
         </HireMeText>
       </HireMe>
     </Wrapper>
