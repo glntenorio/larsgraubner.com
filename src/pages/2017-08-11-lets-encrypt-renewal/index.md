@@ -9,6 +9,8 @@ path: /lets-encrypt-renewal-nginx/
 
 Recently I struggled setting up Let's Encrypt certificate renewal with nginx on this site. If you didn't hear about Let's Encrypt you should [check out their website](https://letsencrypt.org/). They offer free SSL certificates, so there is no valid reason to not have an SSL certificate anymore. There are various tutorials on [how to setup Let's encrypt with nginx](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04).
 
+<!-- more -->
+
 ## The problem
 
 I managed to create a certificate for this blog without much struggle, but when it came to renew it I ran into a problem. I received an "unauthorized" error. The certbot was not able to reach `/.well-known/acme-challenge` and got a 404 error. I noticed it was redirected to HTTPS which made sense. After setting up SSL I added redirect rules to redirect from HTTP to HTTPS which looks like this:

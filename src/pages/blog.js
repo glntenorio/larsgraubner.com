@@ -103,22 +103,6 @@ const Blog = ({ data, location }: Props) => {
         <meta name="twitter:domain" content="larsgraubner.com" />
         <meta name="twitter:title" content="Lars' Blog" />
         <meta name="twitter:description" content={description} />
-        <script type="application/ld+json">
-          {`{
-  "@context": "http://schema.org",
-  "@type": "Blog",
-  "name": "Lars' Blog",
-  "url": "https://larsgraubner.com/blog/",
-  "description": "${description}",
-  "sameAs": [
-    "https://twitter.com/larsgraubner"
-  ],
-  "publisher": {
-    "@type": "Person",
-    "name": "${author}"
-  }
-}`}
-        </script>
       </Helmet>
       <BlogTitle>Lars{"'"} Blog</BlogTitle>
       {values(yearPosts)

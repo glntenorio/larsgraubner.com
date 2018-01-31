@@ -8,6 +8,8 @@ path: /telegraf-middleware-command-arguments/
 ---
 Over the holidays I set up a simple Telegram chatbot using [Telegraf][1]. It allows to easily register commands the bot can react to. Unfortunately Telegraf does not parse any command arguments which might be useful for some commands. Luckily it is very easy to extend Telegraf using middlewares.
 
+<!-- more -->
+
 The year 2016 was all about chatbots. 🤖 Facebook [announced them][2], Telegram has them [since 2015][3]. Therefore I wanted to hop on the train and create a simple bot. The bot should serve as control for some home automation tasks like switching the lights on and off.
 
 ## Setting up the Telegram chatbot

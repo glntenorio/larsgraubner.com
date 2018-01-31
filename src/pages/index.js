@@ -1,24 +1,47 @@
 // @flow
 import React from 'react'
-import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import Link from 'gatsby-link'
 
-import Title from '../components/Title'
-import Text from '../components/Text'
-import Logo from '../components/Logo'
-
-const Wrapper = styled.div`
-  max-width: 620px;
-  padding: 80px 0 40px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+const Post = styled.div`
+  & + div {
+    margin-top: 50px;
+  }
 `
 
-const IndexTitle = Title.extend`
-  margin: 1rem auto 1.5rem;
+const PostDate = styled.div`
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  font-family: 'Lucida Grande', sans-serif;
+  margin-bottom: 0.65em;
+`
+
+const PostTitle = styled.h2`
+  font-weight: 600;
+  font-size: 28px;
+  margin: 0 0 20px;
+  line-height: 32px;
+  font-family: 'Lucida Grande', sans-serif;
+  letter-spacing: -0.02em;
+
+  a {
+    color: #af403c;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+const PostExcerpt = styled.p`
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.84);
+  line-height: 1.5em;
+  margin: 0;
 `
 
 type Props = {
@@ -31,8 +54,10 @@ const Index = ({ data }: Props) => {
 
   const description =
     'Front-end developer from germany. Passionate about React and web performance.'
+
+  const posts = get(data, 'allMarkdownRemark.edges')
   return (
-    <Wrapper>
+    <div>
       <Helmet>
         <title>{`${author} - Front-end developer`}</title>
         <meta name="description" content={description} />
@@ -50,37 +75,22 @@ const Index = ({ data }: Props) => {
           content={`${author} – Front-end Developer`}
         />
         <meta name="twitter:description" content={description} />
-        <script type="application/ld+json">
-          {`{
-  "@context" : "http://schema.org",
-  "@type" : "Person",
-  "name" : "${author}",
-  "image": "https://larsgraubner.com/images/lars-1200x1200.jpg",
-  "jobTitle": "Front-end developer",
-  "url" : "https://larsgraubner.com",
-  "sameAs" : ["https://twitter.com/larsgraubner"]
-}`}
-        </script>
       </Helmet>
-      <Logo resolutions={data.file.childImageSharp.resolutions} />
-      <IndexTitle>Lars Graubner</IndexTitle>
-      <Text>
-        I{"'"}m a passionate front-end developer based in Lübeck, Germany
-        focusing on JavaScript and React Single Page Applications. I created a
-        tool called{' '}
-        <a href="https://github.com/lgraubner/sitemap-generator" rel="nofollow">
-          sitemap-generator
-        </a>{' '}
-        and more{' '}
-        <a href="https://github.com/lgraubner" rel="nofollow">
-          open source stuff
-        </a>. You can follow and contact me on{' '}
-        <a href="https://twitter.com/larsgraubner" rel="nofollow">
-          Twitter
-        </a>{' '}
-        or check out my <Link to="/blog/">blog</Link>.
-      </Text>
-    </Wrapper>
+      {posts.map(({ node }) => {
+        const title = get(node, 'frontmatter.title')
+        const path = get(node, 'frontmatter.path')
+        const date = get(node, 'frontmatter.date')
+        return (
+          <Post key={path}>
+            <PostDate>{date}</PostDate>
+            <PostTitle>
+              <Link to={path}>{title}</Link>
+            </PostTitle>
+            <PostExcerpt dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+          </Post>
+        )
+      })}
+    </div>
   )
 }
 
@@ -94,10 +104,15 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    file(relativePath: { eq: "lars-180x180.jpg" }) {
-      childImageSharp {
-        resolutions(width: 90, height: 90, quality: 90) {
-          ...GatsbyImageSharpResolutions_tracedSVG
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          frontmatter {
+            path
+            date(formatString: "MMM DD, YYYY")
+            title
+          }
+          excerpt
         }
       }
     }

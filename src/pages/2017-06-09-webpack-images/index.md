@@ -10,6 +10,8 @@ path: /webpack-images/
 
 Images are a crucial part of any website. Often they make the most of the transferred bytes. Therefore it's important to optimize them as good as possible. Modern build tools such as [Webpack](https://webpack.js.org/) or [gulp](http://gulpjs.com/) offer all kind of plugins to optimize your images. In this post I'm going to have a closer look at image processing with webpack and how it differs from gulp, [Grunt](https://gruntjs.com/) and similar tools.
 
+<!-- more -->
+
 *This post is assuming webpack v2. Loader syntaxes might vary in other versions.*
 
 ## Migrating from gulp

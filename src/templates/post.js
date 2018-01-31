@@ -3,35 +3,20 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import get from 'lodash/get'
-import Link from 'gatsby-link'
-
-import Title from '../components/Title'
 
 import { textStyles } from '../components/Text'
 
-import { LIGHT_COLOR, BOLD_COLOR, PRIMARY_COLOR } from '../colors'
+import { LIGHT_COLOR, BOLD_COLOR } from '../colors'
 
 const Wrapper = styled.div`
   max-width: 620px;
   margin: 0 auto 8rem;
 `
 
-const BackLink = styled.div`
-  margin-top: 3rem;
-
-  a {
-    color: #fff;
-    text-decoration: none;
-    background-color: ${LIGHT_COLOR};
-    padding: 5px;
-    border-radius: 3px;
-    transition: background 150ms ease-in;
-
-    &:hover,
-    &:focus {
-      background-color: ${PRIMARY_COLOR};
-    }
-  }
+const Title = styled.h1`
+  font-size: 26px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: normal;
 `
 
 const PostHeader = styled.header`
@@ -97,7 +82,7 @@ type Props = {
 
 const BlogPostTemplate = ({ data, location }: Props) => {
   const post = data.markdownRemark
-  const { description, title, date, dateRaw } = data.markdownRemark.frontmatter
+  const { description, title, date } = data.markdownRemark.frontmatter
   const author = get(data, 'site.siteMetadata.author')
   const siteUrl = get(data, 'site.siteMetadata.siteUrl')
 
@@ -117,33 +102,6 @@ const BlogPostTemplate = ({ data, location }: Props) => {
         <meta name="twitter:domain" content="larsgraubner.com" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <script type="application/ld+json">
-          {`{
-  "@context": "http://schema.org",
-  "@type": "Article",
-  "headline": "${title}",
-  "author": {
-    "@type": "Person",
-    "name": "${author}"
-  },
-  "datePublished": "${dateRaw}",
-  "description": "${description}",
-  "image": {
-    "@type": "ImageObject",
-    "url": "https://larsgraubner.com/images/lars-1200x1200.jpg",
-    "height": 1200,
-    "width": 1200
-  },
-  "publisher": {
-  	"@type": "Organization",
-    "name": "Lars Graubner",
-    "logo": {
-   		"@type": "ImageObject",
-  		"url": "https://larsgraubner.com/images/lars-1200x1200.jpg"
-  	}
-  }
-}`}
-        </script>
       </Helmet>
       <Post>
         <PostHeader>
@@ -151,9 +109,6 @@ const BlogPostTemplate = ({ data, location }: Props) => {
           <Title>{title}</Title>
         </PostHeader>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <BackLink>
-          <Link to="/blog/">&larr; Lars{"'"} Blog</Link>
-        </BackLink>
       </Post>
     </Wrapper>
   )
@@ -177,13 +132,6 @@ export const pageQuery = graphql`
         description
         date(formatString: "MMMM DD, YYYY")
         dateRaw: date
-      }
-    }
-    file(relativePath: { eq: "apple-touch-icon.png" }) {
-      childImageSharp {
-        resolutions(width: 40, height: 40) {
-          ...GatsbyImageSharpResolutions_tracedSVG
-        }
       }
     }
   }

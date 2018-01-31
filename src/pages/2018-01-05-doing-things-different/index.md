@@ -7,6 +7,8 @@ path: /doing-things-different/
 
 The year 2018 started a couple days ago and, you probably noticed, comes together with a new layout for this site. For this year I don't have any specific resolutions but I decided I want to try to tackle some things differently to make it easier to succeed and feel happier doing it.
 
+<!-- more -->
+
 ## New site
 
 First of all I remade this site. Again. This site is now powered by [Gatsby](https://www.gatsbyjs.org/) instead of [Hugo](https://gohugo.io). Hugo is awesome and very fast, but dealing with Golang templates doesn't feel familiar. I had to look things up constantly. Gatsby on the other hand is using JavaScript and React behind the scenes. As I'm working with that all day this feels much easier to work with. Hopefully it helps me to focus on new content instead of dealing with the technology behind the scenes.

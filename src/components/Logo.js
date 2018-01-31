@@ -7,18 +7,16 @@ const Wrapper = styled.div`
   display: inline-block;
   border-radius: 50%;
   overflow: hidden;
-  width: ${props => (props.small ? '40px' : '90px')};
-  height: ${props => (props.small ? '40px' : '90px')};
+  width: 90px;
+  height: 90px;
 `
 
 type Props = {
-  resolutions: Object,
-  // eslint-disable-next-line
-  small?: boolean
+  resolutions: Object
 }
 
-const Logo = ({ resolutions, small = false }: Props) => (
-  <Wrapper small={small}>
+const Logo = ({ resolutions }: Props) => (
+  <Wrapper>
     <Image resolutions={resolutions} alt="Lars Graubner" />
   </Wrapper>
 )

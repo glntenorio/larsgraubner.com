@@ -33,7 +33,8 @@ module.exports = {
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants'
-        ]
+        ],
+        excerpt_separator: `<!-- more -->`
       }
     },
     'gatsby-transformer-sharp',

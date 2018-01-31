@@ -9,6 +9,8 @@ path: /handle-outside-clicks-react/
 ---
 Sometimes it's useful to detect clicks outside of a React component to alter its state. A common use case could be a popover which should close if clicked outside of it. This post describes how to implement this into your React component.
 
+<!-- more -->
+
 As a developer you want to guarantee an excellent user experience, so you have to satisfy the habits of them. Taking a popover as example, users expect to close it when they click outside of it. Using React we now have a problem. Everything outside of the component is not in the scope of it's event listeners. You could try to catch the clicks on the parent components and pass it through, but this adds a lot of bloat. Another attempt could be to add an invisible overlay which catches the click. But this requires the user to click twice to interact with something else on the page.
 
 To solve this problem we avoid the React Event System. React builds a wrapper around native events to handle them. Instead we attach an event directly to the DOM. Just like in the old days without React. But first let's create a simple component.
