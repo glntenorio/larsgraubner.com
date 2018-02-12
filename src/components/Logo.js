@@ -1,24 +1,12 @@
-// @flow
-import React from 'react'
-import Image from 'gatsby-image'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
-  display: inline-block;
+export default styled.img`
   border-radius: 50%;
-  overflow: hidden;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
+  filter: grayscale(20%);
+
+  &:hover {
+    filter: grayscale(0);
+  }
 `
-
-type Props = {
-  resolutions: Object
-}
-
-const Logo = ({ resolutions }: Props) => (
-  <Wrapper>
-    <Image resolutions={resolutions} alt="Lars Graubner" />
-  </Wrapper>
-)
-
-export default Logo

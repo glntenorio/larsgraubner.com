@@ -7,6 +7,15 @@ import Link from 'gatsby-link'
 
 import 'prism-themes/themes/prism-atom-dark.css'
 
+import Logo from '../components/Logo'
+
+import {
+  PRIMARY_COLOR,
+  TEXT_COLOR,
+  FONT_SANS_SERIF,
+  LIGHT_COLOR
+} from '../constants'
+
 // eslint-disable-next-line
 injectGlobal`
   ${normalize()}
@@ -23,7 +32,7 @@ injectGlobal`
   body {
     font-family: Georgia, serif;
     /* -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;*/
+    -moz-osx-font-smoothing: grayscale; */
     text-rendering: optimizeLegibility;
   }
 `
@@ -39,35 +48,28 @@ const Sidebar = styled.header`
   text-align: right;
 `
 
-const Logo = styled.img`
-  border-radius: 50%;
-  width: 90px;
-  height: 90px;
-  filter: grayscale(100%);
-`
-
 const Name = styled.div`
-  font-family: 'Lucida Grande', sans-serif;
+  font-family: ${FONT_SANS_SERIF};
   font-size: 20px;
   font-weight: 600;
   margin-top: 15px;
   margin-bottom: 10px;
 
   a {
-    color: rgba(0, 0, 0, 0.84);
+    color: ${TEXT_COLOR};
     text-decoration: none;
   }
 `
 
 const Bio = styled.div`
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6em;
-  color: rgba(0, 0, 0, 0.54);
-  font-family: 'Lucida Grande', sans-serif;
+  color: ${LIGHT_COLOR};
+  font-family: ${FONT_SANS_SERIF};
 `
 
 const Nav = styled.nav`
-  margin-top: 30px;
+  margin-top: 20px;
 
   ul {
     list-style: none;
@@ -81,14 +83,14 @@ const Nav = styled.nav`
     & + li:before {
       content: '·';
       margin: 0 5px;
+      color: ${LIGHT_COLOR};
     }
   }
 
   a {
-    color: rgba(0, 0, 0, 0.54);
+    color: ${PRIMARY_COLOR};
     text-decoration: none;
-    font-family: 'Lucida Grande', sans-serif;
-    letter-spacing: 0.75px;
+    letter-spacing: 1px;
     font-size: 15px;
 
     &:hover {

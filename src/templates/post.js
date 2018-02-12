@@ -5,22 +5,17 @@ import styled from 'styled-components'
 import get from 'lodash/get'
 
 import { textStyles } from '../components/Text'
+import PostDate from '../components/PostDate'
+import PostTitle from '../components/PostTitle'
 
-import { LIGHT_COLOR, BOLD_COLOR } from '../colors'
+import { BOLD_COLOR, FONT_SANS_SERIF } from '../constants'
 
 const Wrapper = styled.div`
   max-width: 620px;
   margin: 0 auto 8rem;
 `
-
-const Title = styled.h1`
-  font-size: 26px;
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: normal;
-`
-
 const PostHeader = styled.header`
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 `
 
 const Post = styled.article`
@@ -30,6 +25,7 @@ const Post = styled.article`
     font-weight: 600;
     line-height: 2.5rem;
     color: ${BOLD_COLOR};
+    font-family: ${FONT_SANS_SERIF};
   }
 
   h3 {
@@ -38,6 +34,7 @@ const Post = styled.article`
     font-weight: 600;
     line-height: 2.5rem;
     color: ${BOLD_COLOR};
+    font-family: ${FONT_SANS_SERIF};
   }
 
   p {
@@ -66,13 +63,6 @@ const Post = styled.article`
 
   .gatsby-highlight-code-line {
   }
-`
-
-const Date = styled.div`
-  font-size: 1.1rem;
-  line-height: 1rem;
-  margin-bottom: 0.75rem;
-  color: ${LIGHT_COLOR};
 `
 
 type Props = {
@@ -105,8 +95,8 @@ const BlogPostTemplate = ({ data, location }: Props) => {
       </Helmet>
       <Post>
         <PostHeader>
-          <Date>{date}</Date>
-          <Title>{title}</Title>
+          <PostDate>{date}</PostDate>
+          <PostTitle singlePost>{title}</PostTitle>
         </PostHeader>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </Post>

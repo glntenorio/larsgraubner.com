@@ -5,41 +5,20 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
 
+import PostDate from '../components/PostDate'
+import PostTitle from '../components/PostTitle'
+
+import { TEXT_COLOR } from '../constants'
+
 const Post = styled.div`
   & + div {
     margin-top: 50px;
   }
 `
 
-const PostDate = styled.div`
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 15px;
-  letter-spacing: -0.02em;
-  font-family: 'Lucida Grande', sans-serif;
-  margin-bottom: 0.65em;
-`
-
-const PostTitle = styled.h2`
-  font-weight: 600;
-  font-size: 28px;
-  margin: 0 0 20px;
-  line-height: 32px;
-  font-family: 'Lucida Grande', sans-serif;
-  letter-spacing: -0.02em;
-
-  a {
-    color: #af403c;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-`
-
 const PostExcerpt = styled.p`
-  font-size: 20px;
-  color: rgba(0, 0, 0, 0.84);
+  font-size: 19px;
+  color: ${TEXT_COLOR};
   line-height: 1.5em;
   margin: 0;
 `
