@@ -70,6 +70,7 @@ const Bio = styled.div`
 
 const Nav = styled.nav`
   margin-top: 20px;
+  font-family: ${FONT_SANS_SERIF};
 
   ul {
     list-style: none;
@@ -91,7 +92,7 @@ const Nav = styled.nav`
     color: ${PRIMARY_COLOR};
     text-decoration: none;
     letter-spacing: 1px;
-    font-size: 15px;
+    font-size: 14px;
 
     &:hover {
       text-decoration: underline;

@@ -6,13 +6,30 @@ import styled from 'styled-components'
 import Link from 'gatsby-link'
 
 import PostDate from '../components/PostDate'
-import PostTitle from '../components/PostTitle'
 
-import { TEXT_COLOR } from '../constants'
+import { TEXT_COLOR, FONT_SANS_SERIF, PRIMARY_COLOR } from '../constants'
 
 const Post = styled.div`
   & + div {
     margin-top: 50px;
+  }
+`
+
+const PostTitle = styled.h2`
+  font-weight: 700;
+  font-size: 24px;
+  margin: 0 0 0.7em;
+  line-height: 1.3em;
+  letter-spacing: -0.02em;
+  font-family: ${FONT_SANS_SERIF};
+
+  a {
+    color: ${PRIMARY_COLOR};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `
 

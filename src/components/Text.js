@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components'
 
-import { TEXT_COLOR, BOLD_COLOR, PRIMARY_COLOR } from '../constants'
+import { TEXT_COLOR, PRIMARY_COLOR } from '../constants'
 
 export const textStyles = () => ({
   lineHeight: '2rem',
@@ -10,7 +10,7 @@ export const textStyles = () => ({
   color: TEXT_COLOR,
 
   a: {
-    color: BOLD_COLOR,
+    color: 'rgba(0, 0, 0, 0.75)',
     borderBottom: `2px solid ${PRIMARY_COLOR}`,
     textDecoration: 'none',
 

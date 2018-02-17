@@ -6,9 +6,8 @@ import get from 'lodash/get'
 
 import { textStyles } from '../components/Text'
 import PostDate from '../components/PostDate'
-import PostTitle from '../components/PostTitle'
 
-import { BOLD_COLOR, FONT_SANS_SERIF } from '../constants'
+import { TEXT_COLOR, FONT_SANS_SERIF } from '../constants'
 
 const Wrapper = styled.div`
   max-width: 620px;
@@ -18,22 +17,33 @@ const PostHeader = styled.header`
   margin-bottom: 0;
 `
 
+const PostTitle = styled.h1`
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0.25em 0 1em;
+  line-height: 1.2em;
+  font-family: ;
+  letter-spacing: -0.02em;
+  font-family: ${FONT_SANS_SERIF};
+  color: ${TEXT_COLOR};
+`
+
 const Post = styled.article`
   h2 {
-    margin: 2rem 0 1.5rem;
-    font-size: 1.85rem;
+    margin: 2rem 0 1rem;
+    font-size: 1.6rem;
     font-weight: 600;
     line-height: 2.5rem;
-    color: ${BOLD_COLOR};
+    color: ${TEXT_COLOR};
     font-family: ${FONT_SANS_SERIF};
   }
 
   h3 {
     margin: 2rem 0 1.25rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     line-height: 2.5rem;
-    color: ${BOLD_COLOR};
+    color: ${TEXT_COLOR};
     font-family: ${FONT_SANS_SERIF};
   }
 
@@ -120,7 +130,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMM DD, YYYY")
         dateRaw: date
       }
     }
