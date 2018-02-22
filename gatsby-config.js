@@ -33,8 +33,7 @@ module.exports = {
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants'
-        ],
-        excerpt_separator: `<!-- more -->`
+        ]
       }
     },
     'gatsby-transformer-sharp',
@@ -100,8 +99,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Lars Graubner',
-        short_name: 'L. Graubner',
+        name: "Lars' Blog",
+        short_name: "Lars' Blog",
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#222222',
@@ -151,7 +150,12 @@ module.exports = {
           }))
       }
     },
-    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-offline',
+      options: {
+        navigateFallbackWhitelist: [/\/$/]
+      }
+    },
     'gatsby-plugin-netlify'
   ]
 }

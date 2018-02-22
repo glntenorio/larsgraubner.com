@@ -5,7 +5,7 @@ import { normalize } from 'polished'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 
-import 'prism-themes/themes/prism-atom-dark.css'
+import 'prism-themes/themes/prism-base16-ateliersulphurpool.light.css'
 
 import Logo from '../components/Logo'
 
@@ -13,10 +13,10 @@ import {
   PRIMARY_COLOR,
   TEXT_COLOR,
   FONT_SANS_SERIF,
-  LIGHT_COLOR
+  LIGHT_COLOR,
+  FONT_SERIF
 } from '../constants'
 
-// eslint-disable-next-line
 injectGlobal`
   ${normalize()}
 
@@ -29,8 +29,17 @@ injectGlobal`
     box-sizing: inherit;
   }
 
+  @font-face {
+    font-family: 'Basier';
+    src: url('/fonts/basiersquare-regular-webfont.woff2') format('woff2'),
+        url('/fonts/basiersquare-regular-webfont.woff') format('woff'),
+        url('/fonts/basiersquare-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   body {
-    font-family: Georgia, serif;
+    font-family: ${FONT_SERIF};
     /* -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale; */
     text-rendering: optimizeLegibility;
@@ -51,7 +60,7 @@ const Sidebar = styled.header`
 const Name = styled.div`
   font-family: ${FONT_SANS_SERIF};
   font-size: 20px;
-  font-weight: 600;
+  font-weight: bold;
   margin-top: 15px;
   margin-bottom: 10px;
 
@@ -63,7 +72,7 @@ const Name = styled.div`
 
 const Bio = styled.div`
   font-size: 15px;
-  line-height: 1.6em;
+  line-height: 1.55em;
   color: ${LIGHT_COLOR};
   font-family: ${FONT_SANS_SERIF};
 `
@@ -139,17 +148,19 @@ const Template = ({ children, location }: Props) => (
         )}`}
       />
       <link
-        href="https://fonts.googleapis.com/css?family=Vollkorn"
+        href="https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,700"
         rel="stylesheet"
       />
     </Helmet>
     <Sidebar>
-      <Logo src="/lars-180x180.jpg" alt="Lars Graubner" />
+      <Link to="/">
+        <Logo src="/lars-180x180.jpg" alt="Lars Graubner" />
+      </Link>
       <Name>
         <Link to="/">Lars Graubner</Link>
       </Name>
       <Bio>
-        Front-end developer from germany. Passionate about React and web
+        Front-end developer from Germany. Passionate about React and web
         performance.
       </Bio>
       <Nav>

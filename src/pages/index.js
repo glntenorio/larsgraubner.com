@@ -18,7 +18,7 @@ const Post = styled.div`
 const PostTitle = styled.h2`
   font-weight: 700;
   font-size: 24px;
-  margin: 0 0 0.7em;
+  margin: 0 0 0.5em;
   line-height: 1.3em;
   letter-spacing: -0.02em;
   font-family: ${FONT_SANS_SERIF};
@@ -34,9 +34,9 @@ const PostTitle = styled.h2`
 `
 
 const PostExcerpt = styled.p`
-  font-size: 19px;
+  font-size: 18px;
   color: ${TEXT_COLOR};
-  line-height: 1.5em;
+  line-height: 1.75em;
   margin: 0;
 `
 

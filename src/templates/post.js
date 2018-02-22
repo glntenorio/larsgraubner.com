@@ -20,9 +20,8 @@ const PostHeader = styled.header`
 const PostTitle = styled.h1`
   font-weight: 700;
   font-size: 32px;
-  margin: 0.25em 0 1em;
+  margin: 0.25em 0 0.75em;
   line-height: 1.2em;
-  font-family: ;
   letter-spacing: -0.02em;
   font-family: ${FONT_SANS_SERIF};
   color: ${TEXT_COLOR};
@@ -54,8 +53,8 @@ const Post = styled.article`
       font-size: 90%;
       padding: 0.2em 0.4em;
       background-color: rgba(0, 0, 0, 0.05);
-      border-radius: 0.25rem;
-      color: rgba(0, 0, 0, 0.65);
+      border-radius: 3px;
+      color: rgba(0, 0, 0, 0.55);
     }
   }
 
@@ -67,7 +66,8 @@ const Post = styled.article`
       margin: 0;
       border-radius: 3px;
       padding: 20px 4%;
-      font-size: 1rem;
+      font-size: 15px;
+      line-height: 1.6em;
     }
   }
 
