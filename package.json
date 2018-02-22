@@ -26,6 +26,8 @@
     "gatsby-source-filesystem": "1.5.21",
     "gatsby-transformer-remark": "1.7.33",
     "gatsby-transformer-sharp": "1.6.20",
+    "husky": "0.14.3",
+    "lint-staged": "7.0.0",
     "lodash": "4.17.5",
     "polished": "1.9.2",
     "prism-themes": "1.0.0",
@@ -59,7 +61,11 @@
     "flow": "flow",
     "build": "gatsby build",
     "serve": "npm run build && gatsby serve",
-    "create-post": "node create-post.js"
+    "create-post": "node create-post.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "prettier --write", "git add"]
   },
   "prettier": {
     "singleQuote": true,
