@@ -29,20 +29,11 @@ injectGlobal`
     box-sizing: inherit;
   }
 
-  @font-face {
-    font-family: 'Basier';
-    src: url('/fonts/basiersquare-regular-webfont.woff2') format('woff2'),
-        url('/fonts/basiersquare-regular-webfont.woff') format('woff'),
-        url('/fonts/basiersquare-regular-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-
   body {
     font-family: ${FONT_SERIF};
-    /* -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; */
-    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimize-legibility;
   }
 `
 
@@ -71,9 +62,9 @@ const Name = styled.div`
 `
 
 const Bio = styled.div`
-  font-size: 15px;
-  line-height: 1.55em;
-  color: ${LIGHT_COLOR};
+  font-size: 16px;
+  line-height: 1.65em;
+  color: rgba(0, 0, 0, 0.6);
   font-family: ${FONT_SANS_SERIF};
 `
 
@@ -101,7 +92,9 @@ const Nav = styled.nav`
     color: ${PRIMARY_COLOR};
     text-decoration: none;
     letter-spacing: 1px;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
 
     &:hover {
       text-decoration: underline;
@@ -139,17 +132,6 @@ const Template = ({ children, location }: Props) => (
         type="image/png"
         sizes="16x16"
         href="/favicon-16x16.png"
-      />
-      <link
-        rel="canonical"
-        href={`https://larsgraubner.com${location.pathname.replace(
-          /\/?$/,
-          '/'
-        )}`}
-      />
-      <link
-        href="https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:400,600,700"
-        rel="stylesheet"
       />
     </Helmet>
     <Sidebar>

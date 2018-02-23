@@ -19,8 +19,8 @@ const PostHeader = styled.header`
 
 const PostTitle = styled.h1`
   font-weight: 700;
-  font-size: 32px;
-  margin: 0.25em 0 0.75em;
+  font-size: 36px;
+  margin: 0 0 0.75em;
   line-height: 1.2em;
   letter-spacing: -0.02em;
   font-family: ${FONT_SANS_SERIF};
@@ -29,9 +29,9 @@ const PostTitle = styled.h1`
 
 const Post = styled.article`
   h2 {
-    margin: 2rem 0 1rem;
-    font-size: 1.6rem;
-    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+    font-size: 28px;
+    font-weight: 700;
     line-height: 2.5rem;
     color: ${TEXT_COLOR};
     font-family: ${FONT_SANS_SERIF};
@@ -66,7 +66,7 @@ const Post = styled.article`
       margin: 0;
       border-radius: 3px;
       padding: 20px 4%;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.6em;
     }
   }

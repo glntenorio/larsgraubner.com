@@ -11,16 +11,15 @@ import { TEXT_COLOR, FONT_SANS_SERIF, PRIMARY_COLOR } from '../constants'
 
 const Post = styled.div`
   & + div {
-    margin-top: 50px;
+    margin-top: 60px;
   }
 `
 
 const PostTitle = styled.h2`
   font-weight: 700;
-  font-size: 24px;
-  margin: 0 0 0.5em;
+  font-size: 26px;
+  margin: 0 0 0.35em;
   line-height: 1.3em;
-  letter-spacing: -0.02em;
   font-family: ${FONT_SANS_SERIF};
 
   a {
@@ -36,7 +35,7 @@ const PostTitle = styled.h2`
 const PostExcerpt = styled.p`
   font-size: 18px;
   color: ${TEXT_COLOR};
-  line-height: 1.75em;
+  line-height: 1.65em;
   margin: 0;
 `
 
