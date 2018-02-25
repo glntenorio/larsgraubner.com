@@ -5,6 +5,7 @@ import { normalize } from 'polished'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 
+// $FlowFixMe
 import 'prism-themes/themes/prism-base16-ateliersulphurpool.light.css'
 
 import Logo from '../components/Logo'
