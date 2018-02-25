@@ -34,7 +34,7 @@ injectGlobal`
     font-family: ${FONT_SERIF};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimize-legibility;
+    text-rendering: optimizeLegibility;
   }
 `
 
