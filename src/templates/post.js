@@ -117,14 +117,14 @@ const BlogPostTemplate = ({ data, location }: Props) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
+  query BlogPostByPath($url: String!) {
     site {
       siteMetadata {
         author
         siteUrl
       }
     }
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(frontmatter: { url: { eq: $url } }) {
       id
       html
       frontmatter {

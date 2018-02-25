@@ -1,15 +1,15 @@
 const path = require('path')
 
-exports.modifyWebpackConfig = ({ config, stage }) => {
-  if (stage === 'develop') {
-    config.preLoader('eslint-loader', {
-      test: /\.js$/,
-      exclude: /node_modules/
-    })
-  }
+// exports.modifyWebpackConfig = ({ config, stage }) => {
+//   if (stage === 'develop') {
+//     config.preLoader('eslint-loader', {
+//       test: /\.js$/,
+//       exclude: /node_modules/
+//     })
+//   }
 
-  return config
-}
+//   return config
+// }
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -24,7 +24,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               edges {
                 node {
                   frontmatter {
-                    path
+                    url
                   }
                 }
               }
@@ -41,10 +41,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         // Create blog posts pages.
         result.data.allMarkdownRemark.edges.map(edge =>
           createPage({
-            path: edge.node.frontmatter.path,
+            path: edge.node.frontmatter.url,
             component: blogPost,
             context: {
-              path: edge.node.frontmatter.path
+              url: edge.node.frontmatter.url
             }
           })
         )

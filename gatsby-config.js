@@ -66,8 +66,8 @@ module.exports = {
               allMarkdownRemark.edges.map(edge =>
                 Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
-                  url: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
-                  guid: site.siteMetadata.siteUrl + edge.node.frontmatter.path,
+                  url: site.siteMetadata.siteUrl + edge.node.frontmatter.url,
+                  guid: site.siteMetadata.siteUrl + edge.node.frontmatter.url,
                   custom_elements: [{ 'content:encoded': edge.node.html }]
                 })
               ),
@@ -82,7 +82,7 @@ module.exports = {
                       excerpt
                       html
                       frontmatter {
-                        path
+                        url
                         title
                         date
                       }
@@ -131,14 +131,14 @@ module.exports = {
           }
           allSitePage(
             filter: {
-              path: {
+              url: {
                 regex: "${/^(?!\/(dev-404-page|404|offline-plugin-app-shell-fallback)).*$/}"
               }
             }
           ) {
             edges {
               node {
-                path
+                url
               }
             }
           }
@@ -146,7 +146,7 @@ module.exports = {
       `,
         serialize: ({ site, allSitePage }) =>
           allSitePage.edges.map(edge => ({
-            url: site.siteMetadata.siteUrl + edge.node.path
+            url: site.siteMetadata.siteUrl + edge.node.url
           }))
       }
     },

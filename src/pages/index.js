@@ -73,7 +73,7 @@ const Index = ({ data }: Props) => {
       </Helmet>
       {posts.map(({ node }) => {
         const title = get(node, 'frontmatter.title')
-        const path = get(node, 'frontmatter.path')
+        const path = get(node, 'frontmatter.url')
         const date = get(node, 'frontmatter.date')
         return (
           <Post key={path}>
@@ -103,7 +103,7 @@ export const pageQuery = graphql`
       edges {
         node {
           frontmatter {
-            path
+            url
             date(formatString: "MMM DD, YYYY")
             title
           }
