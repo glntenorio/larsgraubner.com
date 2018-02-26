@@ -13,7 +13,7 @@ type Props = {
   data: Object
 }
 
-const Index = ({ data }: Props) => {
+const Archive = ({ data }: Props) => {
   const author = get(data, 'site.siteMetadata.author')
   const siteUrl = get(data, 'site.siteMetadata.siteUrl')
 
@@ -61,10 +61,10 @@ const Index = ({ data }: Props) => {
   )
 }
 
-export default Index
+export default Archive
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query ArchiveQuery {
     site {
       siteMetadata {
         author

@@ -15,7 +15,8 @@ import {
   TEXT_COLOR,
   FONT_SANS_SERIF,
   LIGHT_COLOR,
-  FONT_SERIF
+  FONT_SERIF,
+  TITLE_COLOR
 } from '../constants'
 
 injectGlobal`
@@ -39,14 +40,26 @@ injectGlobal`
 `
 
 const Wrapper = styled.div`
-  width: 850px;
-  margin: 10% auto;
+  width: 90%;
+  margin: 40px 5%;
+
+  @media (min-width: 992px) {
+    width: 850px;
+    margin: 120px auto;
+  }
 `
 
-const Sidebar = styled.header`
-  width: 210px;
-  float: left;
-  text-align: right;
+const Sidebar = styled.aside`
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 300px;
+  margin: 0 auto 60px;
+
+  @media (min-width: 992px) {
+    width: 210px;
+    float: left;
+    text-align: right;
+  }
 `
 
 const Name = styled.div`
@@ -55,19 +68,26 @@ const Name = styled.div`
   font-weight: bold;
   margin-top: 15px;
   margin-bottom: 10px;
+  color: ${TITLE_COLOR};
 
   a {
-    color: ${TEXT_COLOR};
+    color: ${TITLE_COLOR};
     text-decoration: none;
   }
 `
 
+const NameIndex = Name.withComponent('h1')
+
 const Bio = styled.div`
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65em;
   color: rgba(0, 0, 0, 0.6);
   font-family: ${FONT_SANS_SERIF};
+  font-weight: 400;
+  margin: 0;
 `
+
+const BioIndex = Bio.withComponent('h2')
 
 const Nav = styled.nav`
   margin-top: 20px;
@@ -104,13 +124,22 @@ const Nav = styled.nav`
 `
 
 const Content = styled.main`
-  margin-left: 260px;
+  max-width: 600px;
+  margin: 0 auto;
+
+  @media (min-width: 992px) {
+    margin-left: 260px;
+  }
 `
 
 type Props = {
   children: Function,
   location: Object
 }
+
+const name = 'Lars Graubner'
+const info =
+  'Front-end developer from Germany. Passionate about React and web performance.'
 
 const Template = ({ children, location }: Props) => (
   <Wrapper>
@@ -139,13 +168,18 @@ const Template = ({ children, location }: Props) => (
       <Link to="/">
         <Logo src="/lars-180x180.jpg" alt="Lars Graubner" />
       </Link>
-      <Name>
-        <Link to="/">Lars Graubner</Link>
-      </Name>
-      <Bio>
-        Front-end developer from Germany. Passionate about React and web
-        performance.
-      </Bio>
+      {location.pathname === '/' ? (
+        <NameIndex>{name}</NameIndex>
+      ) : (
+        <Name>
+          <Link to="/">{name}</Link>
+        </Name>
+      )}
+      {location.pathname === '/' ? (
+        <BioIndex>{info}</BioIndex>
+      ) : (
+        <Bio>{info}</Bio>
+      )}
       <Nav>
         <ul>
           <li>

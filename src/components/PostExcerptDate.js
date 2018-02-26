@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 import { FONT_SANS_SERIF } from '../constants'
 
-const PostDate = styled.div`
+const PostExcerptDate = styled.div`
   color: rgba(0, 0, 0, 0.45);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.5px;
   font-family: ${FONT_SANS_SERIF};
@@ -12,4 +12,4 @@ const PostDate = styled.div`
   text-transform: uppercase;
 `
 
-export default PostDate
+export default PostExcerptDate

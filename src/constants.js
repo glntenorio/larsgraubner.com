@@ -1,3 +1,4 @@
+export const TITLE_COLOR = 'rgba(0, 0, 0, 0.85)'
 export const TEXT_COLOR = 'rgba(0, 0, 0, 0.75)'
 export const LIGHT_COLOR = 'rgba(0, 0, 0, 0.55)'
 export const PRIMARY_COLOR = '#af403c'

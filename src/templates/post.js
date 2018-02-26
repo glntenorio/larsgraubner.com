@@ -4,10 +4,9 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import get from 'lodash/get'
 
-import { textStyles } from '../components/Text'
 import PostDate from '../components/PostDate'
 
-import { TEXT_COLOR, FONT_SANS_SERIF } from '../constants'
+import { FONT_SANS_SERIF, PRIMARY_COLOR, TITLE_COLOR } from '../constants'
 
 const Wrapper = styled.div`
   max-width: 620px;
@@ -19,22 +18,30 @@ const PostHeader = styled.header`
 
 const PostTitle = styled.h1`
   font-weight: 700;
-  font-size: 36px;
+  font-size: 30px;
   margin: 0 0 0.75em;
   line-height: 1.2em;
   letter-spacing: -0.02em;
   font-family: ${FONT_SANS_SERIF};
-  color: ${TEXT_COLOR};
+  color: ${TITLE_COLOR};
+
+  @media (min-width: 992px) {
+    font-size: 38px;
+  }
 `
 
 const Post = styled.article`
   h2 {
     margin: 1.5em 0 0.5em;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
     line-height: 2.5rem;
-    color: ${TEXT_COLOR};
+    color: ${TITLE_COLOR};
     font-family: ${FONT_SANS_SERIF};
+
+    @media (min-width: 992px) {
+      font-size: 28px;
+    }
   }
 
   h3 {
@@ -42,12 +49,30 @@ const Post = styled.article`
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 2.5rem;
-    color: ${TEXT_COLOR};
+    color: ${TITLE_COLOR};
     font-family: ${FONT_SANS_SERIF};
   }
 
   p {
-    ${textStyles()};
+    line-height: 1.7em;
+    font-size: 19px;
+    margin: 0 0 28px;
+    color: rgba(0, 0, 0, 0.75);
+
+    @media (min-width: 992px) {
+      font-size: 20px;
+    }
+
+    a {
+      color: rgba(0, 0, 0, 0.75);
+      border-bottom: 2px solid ${PRIMARY_COLOR};
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        border-color: transparent;
+      }
+    }
 
     code {
       font-size: 90%;
@@ -59,15 +84,23 @@ const Post = styled.article`
   }
 
   .gatsby-highlight {
-    margin: 2rem 0 2rem -4%;
-    width: 108%;
+    margin: 2rem 0;
+
+    @media (min-width: 992px) {
+      width: 108%;
+      margin-left: -4%;
+    }
 
     pre {
       margin: 0;
       border-radius: 3px;
       padding: 20px 4%;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 1.6em;
+
+      @media (min-width: 992px) {
+        font-size: 16px;
+      }
     }
   }
 
