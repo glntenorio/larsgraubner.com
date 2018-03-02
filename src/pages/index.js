@@ -47,13 +47,9 @@ const Index = ({ data }: Props) => {
         const date = get(node, 'frontmatter.date')
         return (
           <PostExcerpt key={path}>
-            <PostExcerptDate>{date}</PostExcerptDate>
             <PostExcerptTitle>
               <Link to={path}>{title}</Link>
             </PostExcerptTitle>
-            <PostExcerptText
-              dangerouslySetInnerHTML={{ __html: node.excerpt }}
-            />
           </PostExcerpt>
         )
       })}

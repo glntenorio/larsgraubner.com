@@ -12,7 +12,6 @@ import Logo from '../components/Logo'
 
 import {
   PRIMARY_COLOR,
-  TEXT_COLOR,
   FONT_SANS_SERIF,
   LIGHT_COLOR,
   FONT_SERIF,
@@ -44,30 +43,21 @@ const Wrapper = styled.div`
   margin: 40px 5%;
 
   @media (min-width: 992px) {
-    width: 850px;
-    margin: 120px auto;
+    max-width: 640px;
+    margin: 60px auto 120px;
   }
 `
 
-const Sidebar = styled.aside`
-  text-align: center;
-  margin-bottom: 40px;
-  max-width: 300px;
-  margin: 0 auto 60px;
-
-  @media (min-width: 992px) {
-    width: 210px;
-    float: left;
-    text-align: right;
-  }
+const Header = styled.header`
+  margin-bottom: 80px;
 `
 
 const Name = styled.div`
   font-family: ${FONT_SANS_SERIF};
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 40px;
+  font-weight: 700;
   margin-top: 15px;
-  margin-bottom: 10px;
+  margin-bottom: 0.1em;
   color: ${TITLE_COLOR};
 
   a {
@@ -79,18 +69,23 @@ const Name = styled.div`
 const NameIndex = Name.withComponent('h1')
 
 const Bio = styled.div`
-  font-size: 15px;
+  font-size: 22px;
   line-height: 1.65em;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.65);
   font-family: ${FONT_SANS_SERIF};
   font-weight: 400;
   margin: 0;
+
+  a {
+    color: ${PRIMARY_COLOR};
+    text-decoration: none;
+  }
 `
 
 const BioIndex = Bio.withComponent('h2')
 
 const Nav = styled.nav`
-  margin-top: 20px;
+  margin-top: 30px;
   font-family: ${FONT_SANS_SERIF};
 
   ul {
@@ -101,21 +96,14 @@ const Nav = styled.nav`
 
   li {
     display: inline;
-
-    & + li:before {
-      content: '·';
-      margin: 0 5px;
-      color: ${LIGHT_COLOR};
-    }
+    margin-right: 35px;
   }
 
   a {
     color: ${PRIMARY_COLOR};
     text-decoration: none;
-    letter-spacing: 1px;
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 600;
-    text-transform: uppercase;
 
     &:hover {
       text-decoration: underline;
@@ -124,12 +112,8 @@ const Nav = styled.nav`
 `
 
 const Content = styled.main`
-  max-width: 600px;
+  width: 100%;
   margin: 0 auto;
-
-  @media (min-width: 992px) {
-    margin-left: 260px;
-  }
 `
 
 type Props = {
@@ -138,8 +122,7 @@ type Props = {
 }
 
 const name = 'Lars Graubner'
-const info =
-  'Front-end developer from Germany. Passionate about React and web performance.'
+const info = 'Front-end developer'
 
 const Template = ({ children, location }: Props) => (
   <Wrapper>
@@ -164,10 +147,10 @@ const Template = ({ children, location }: Props) => (
         href="/favicon-16x16.png"
       />
     </Helmet>
-    <Sidebar>
-      <Link to="/">
+    <Header>
+      {/* <Link to="/">
         <Logo src="/lars-180x180.jpg" alt="Lars Graubner" />
-      </Link>
+</Link> */}
       {location.pathname === '/' ? (
         <NameIndex>{name}</NameIndex>
       ) : (
@@ -183,17 +166,17 @@ const Template = ({ children, location }: Props) => (
       <Nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Blog</Link>
           </li>
           <li>
-            <Link to="/about/">About</Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="https://twitter.com/lgraubner">Twitter</a>
+            <a href="https://twitter.com/lgraubner">@larsgraubner</a>
           </li>
         </ul>
       </Nav>
-    </Sidebar>
+    </Header>
     <Content>{children()}</Content>
   </Wrapper>
 )

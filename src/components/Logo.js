@@ -5,6 +5,7 @@ export default styled.img`
   width: 80px;
   height: 80px;
   filter: grayscale(20%);
+  float: left;
 
   &:hover {
     filter: grayscale(0);

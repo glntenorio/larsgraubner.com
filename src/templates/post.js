@@ -9,7 +9,7 @@ import PostDate from '../components/PostDate'
 import { FONT_SANS_SERIF, PRIMARY_COLOR, TITLE_COLOR } from '../constants'
 
 const Wrapper = styled.div`
-  max-width: 620px;
+  max-width: 640px;
   margin: 0 auto 8rem;
 `
 const PostHeader = styled.header`
@@ -26,7 +26,7 @@ const PostTitle = styled.h1`
   color: ${TITLE_COLOR};
 
   @media (min-width: 992px) {
-    font-size: 38px;
+    font-size: 40px;
   }
 `
 
@@ -54,13 +54,13 @@ const Post = styled.article`
   }
 
   p {
-    line-height: 1.7em;
+    line-height: 1.75em;
     font-size: 19px;
     margin: 0 0 28px;
     color: rgba(0, 0, 0, 0.75);
 
     @media (min-width: 992px) {
-      font-size: 20px;
+      font-size: 21px;
     }
 
     a {

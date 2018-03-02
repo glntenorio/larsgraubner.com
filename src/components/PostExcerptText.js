@@ -9,7 +9,7 @@ const PostExcerptText = styled.p`
   margin: 0;
 
   @media (min-width: 992px) {
-    font-size: 19px;^
+    font-size: 21px;
   }
 `
 
