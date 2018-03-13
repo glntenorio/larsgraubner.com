@@ -45,11 +45,14 @@ const Index = ({ data }: Props) => {
         const title = get(node, 'frontmatter.title')
         const path = get(node, 'frontmatter.url')
         const date = get(node, 'frontmatter.date')
+
         return (
           <PostExcerpt key={path}>
+            <PostExcerptDate>{date}</PostExcerptDate>
             <PostExcerptTitle>
               <Link to={path}>{title}</Link>
             </PostExcerptTitle>
+            <PostExcerptText>{node.excerpt}</PostExcerptText>
           </PostExcerpt>
         )
       })}

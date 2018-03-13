@@ -8,15 +8,9 @@ import Link from 'gatsby-link'
 // $FlowFixMe
 import 'prism-themes/themes/prism-base16-ateliersulphurpool.light.css'
 
-import Logo from '../components/Logo'
+import { FONT_SANS_SERIF, FONT_SERIF } from '../constants'
 
-import {
-  PRIMARY_COLOR,
-  FONT_SANS_SERIF,
-  LIGHT_COLOR,
-  FONT_SERIF,
-  TITLE_COLOR
-} from '../constants'
+import config from '../../gatsby-config'
 
 injectGlobal`
   ${normalize()}
@@ -38,55 +32,55 @@ injectGlobal`
   }
 `
 
-const Wrapper = styled.div`
-  width: 90%;
-  margin: 40px 5%;
-
+const Container = styled.div`
   @media (min-width: 992px) {
-    max-width: 640px;
-    margin: 60px auto 120px;
+    margin: 100px 0 120px;
+    padding-left: 260px;
   }
 `
 
-const Header = styled.header`
-  margin-bottom: 80px;
+const Sidebar = styled.header`
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: #181818;
+  padding: 60px 40px 40px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
 `
+
+const Logo = styled.div``
 
 const Name = styled.div`
   font-family: ${FONT_SANS_SERIF};
-  font-size: 40px;
-  font-weight: 700;
-  margin-top: 15px;
-  margin-bottom: 0.1em;
-  color: ${TITLE_COLOR};
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 0.1em 0;
+  color: #fff;
 
   a {
-    color: ${TITLE_COLOR};
+    color: #fff;
     text-decoration: none;
   }
 `
 
 const NameIndex = Name.withComponent('h1')
 
-const Bio = styled.div`
-  font-size: 22px;
+const Subline = styled.div`
+  font-size: 17px;
   line-height: 1.65em;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(255, 255, 255, 0.5);
   font-family: ${FONT_SANS_SERIF};
   font-weight: 400;
   margin: 0;
-
-  a {
-    color: ${PRIMARY_COLOR};
-    text-decoration: none;
-  }
 `
 
-const BioIndex = Bio.withComponent('h2')
-
 const Nav = styled.nav`
-  margin-top: 30px;
   font-family: ${FONT_SANS_SERIF};
+  margin-top: 100px;
 
   ul {
     list-style: none;
@@ -94,25 +88,36 @@ const Nav = styled.nav`
     margin: 0;
   }
 
-  li {
-    display: inline;
-    margin-right: 35px;
+  li:not(:last-child) {
+    margin-bottom: 20px;
   }
 
   a {
-    color: ${PRIMARY_COLOR};
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 400;
 
     &:hover {
-      text-decoration: underline;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.25);
     }
   }
 `
 
+const Social = Nav.extend`
+  margin-top: 30px;
+
+  &:before {
+    margin-bottom: 30px;
+    content: '';
+    display: block;
+    width: 35px;
+    border-top: 3px solid rgba(255, 255, 255, 0.25);
+  }
+`
+
 const Content = styled.main`
-  width: 100%;
+  max-width: 640px;
   margin: 0 auto;
 `
 
@@ -121,11 +126,8 @@ type Props = {
   location: Object
 }
 
-const name = 'Lars Graubner'
-const info = 'Front-end developer'
-
 const Template = ({ children, location }: Props) => (
-  <Wrapper>
+  <Container>
     <Helmet>
       <html lang="en" />
       <meta name="robots" content="index,follow" />
@@ -147,22 +149,17 @@ const Template = ({ children, location }: Props) => (
         href="/favicon-16x16.png"
       />
     </Helmet>
-    <Header>
-      {/* <Link to="/">
-        <Logo src="/lars-180x180.jpg" alt="Lars Graubner" />
-</Link> */}
-      {location.pathname === '/' ? (
-        <NameIndex>{name}</NameIndex>
-      ) : (
-        <Name>
-          <Link to="/">{name}</Link>
-        </Name>
-      )}
-      {location.pathname === '/' ? (
-        <BioIndex>{info}</BioIndex>
-      ) : (
-        <Bio>{info}</Bio>
-      )}
+    <Sidebar>
+      <Logo>
+        {location.pathname === '/' ? (
+          <NameIndex>{config.siteMetadata.author}</NameIndex>
+        ) : (
+          <Name>
+            <Link to="/">{config.siteMetadata.author}</Link>
+          </Name>
+        )}
+        <Subline>{config.siteMetadata.subline}</Subline>
+      </Logo>
       <Nav>
         <ul>
           <li>
@@ -172,13 +169,23 @@ const Template = ({ children, location }: Props) => (
             <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="https://twitter.com/lgraubner">@larsgraubner</a>
+            <Link to="/about">Learn React</Link>
           </li>
         </ul>
       </Nav>
-    </Header>
+      <Social>
+        <ul>
+          <li>
+            <a href="https://github.com/larsgraubner">Github</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/lgraubner">Twitter</a>
+          </li>
+        </ul>
+      </Social>
+    </Sidebar>
     <Content>{children()}</Content>
-  </Wrapper>
+  </Container>
 )
 
 export default Template

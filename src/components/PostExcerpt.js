@@ -5,7 +5,7 @@ const PostExcerpt = styled.article`
     margin-top: 40px;
 
     @media (min-width: 992px) {
-      margin-top: 30px;
+      margin-top: 100px;
     }
   }
 `
