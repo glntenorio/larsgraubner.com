@@ -29,9 +29,6 @@ const PostTitle = styled.h1`
 `
 
 const Post = styled.article`
-  max-width: 640px;
-  margin: 120px auto 8rem;
-
   h2 {
     margin: 1.5em 0 0.5em;
     font-size: 26px;

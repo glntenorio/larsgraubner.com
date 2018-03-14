@@ -8,6 +8,8 @@ import Link from 'gatsby-link'
 // $FlowFixMe
 import 'prism-themes/themes/prism-base16-ateliersulphurpool.light.css'
 
+import Container from '../components/Container'
+
 import { FONT_SANS_SERIF, FONT_SERIF } from '../constants'
 
 import config from '../../gatsby-config'
@@ -29,13 +31,6 @@ injectGlobal`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-  }
-`
-
-const Container = styled.div`
-  @media (min-width: 992px) {
-    margin: 100px 0 120px;
-    padding-left: 260px;
   }
 `
 
@@ -176,10 +171,10 @@ const Template = ({ children, location }: Props) => (
       <Social>
         <ul>
           <li>
-            <a href="https://github.com/larsgraubner">Github</a>
+            <a href="https://github.com/lgraubner">Github</a>
           </li>
           <li>
-            <a href="https://twitter.com/lgraubner">Twitter</a>
+            <a href="https://twitter.com/larsgraubner">Twitter</a>
           </li>
         </ul>
       </Social>
