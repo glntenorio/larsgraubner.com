@@ -143,6 +143,10 @@ const Template = ({ children, location }: Props) => (
         sizes="16x16"
         href="/favicon-16x16.png"
       />
+      <link
+        href="https://fonts.googleapis.com/css?family=Lora:400,700|Oswald:700"
+        rel="stylesheet"
+      />
     </Helmet>
     <Sidebar>
       <Logo>

@@ -3,12 +3,13 @@ import styled from 'styled-components'
 import { FONT_SANS_SERIF } from '../constants'
 
 const PostDate = styled.div`
-  color: rgba(0, 0, 0, 0.45);
-  font-size: 15px;
-  font-weight: 500;
+  color: #999;
+  font-size: 12px;
+  font-weight: 700;
   font-family: ${FONT_SANS_SERIF};
-  margin-bottom: 0.5em;
+  margin-bottom: 1.65em;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
 `
 
 export default PostDate

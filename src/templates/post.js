@@ -6,7 +6,12 @@ import get from 'lodash/get'
 
 import PostDate from '../components/PostDate'
 
-import { FONT_SANS_SERIF, PRIMARY_COLOR, TITLE_COLOR } from '../constants'
+import {
+  FONT_SANS_SERIF,
+  PRIMARY_COLOR,
+  TITLE_COLOR,
+  FONT_BOLD
+} from '../constants'
 
 const Wrapper = styled.div``
 
@@ -17,28 +22,29 @@ const PostHeader = styled.header`
 const PostTitle = styled.h1`
   font-weight: 700;
   font-size: 30px;
-  margin: 0 0 0.75em;
-  line-height: 1.2em;
-  letter-spacing: -0.02em;
-  font-family: ${FONT_SANS_SERIF};
+  margin-top: 0;
+  line-height: 1.3em;
+  font-family: ${FONT_BOLD};
+  text-transform: uppercase;
   color: ${TITLE_COLOR};
 
   @media (min-width: 992px) {
-    font-size: 40px;
+    font-size: 54px;
   }
 `
 
 const Post = styled.article`
   h2 {
-    margin: 1.5em 0 0.5em;
+    margin-top: 80px;
     font-size: 26px;
     font-weight: 700;
-    line-height: 2.5rem;
+    line-height: 1.3rem;
     color: ${TITLE_COLOR};
-    font-family: ${FONT_SANS_SERIF};
+    text-transform: uppercase;
+    font-family: ${FONT_BOLD};
 
     @media (min-width: 992px) {
-      font-size: 28px;
+      font-size: 38px;
     }
   }
 
@@ -55,10 +61,10 @@ const Post = styled.article`
     line-height: 1.75em;
     font-size: 19px;
     margin: 0 0 28px;
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(0, 0, 0, 0.85);
 
     @media (min-width: 992px) {
-      font-size: 21px;
+      font-size: 20px;
     }
 
     a {
