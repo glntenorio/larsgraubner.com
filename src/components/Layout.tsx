@@ -161,9 +161,9 @@ const Layout = ({ children, index = false }: Props) => (
         <NameLink to="/">Lars Graubner</NameLink>
       </Name>
       <HeaderNav>
-        <NavLink to="/">Blog</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/hireme">Hire me</NavLink>
+        <NavLink to="/work">Work</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </HeaderNav>
     </Header>
     <Content>{children}</Content>
@@ -172,8 +172,7 @@ const Layout = ({ children, index = false }: Props) => (
         © {new Date().getFullYear()} Lars Graubner. All rights reserved.
       </Copyright>
       <FooterNav>
-        <FooterLink to="/uses">Uses</FooterLink>
-        <FooterLink to="/newsletter">Newsletter</FooterLink>
+        <FooterLink to="/about">About</FooterLink>
         <FooterLink to="/contact">Contact</FooterLink>
         <FooterLink to="/impressum">Impressum</FooterLink>
         <FooterLink to="/privacy">Privacy</FooterLink>

@@ -22,7 +22,7 @@ const HireMe = () => (
         content="I'm offering contract work, consulting and teaching. Contact me and we work something out."
       />
     </Helmet>
-    <H1>Hire me</H1>
+    <H1>Work</H1>
     <P>
       Next to my regular job I'm self-employed and offer the following services:
     </P>

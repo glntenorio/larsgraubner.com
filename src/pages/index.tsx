@@ -1,129 +1,61 @@
 import React from 'react'
-import idx from 'idx'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
+import idx from 'idx'
 
 import Layout from '../components/Layout'
-import Link from '../components/Link'
-import NewsletterBox from '../components/NewsletterBox'
+import P from '../components/Paragraph'
+import { H2, H3 } from '../components/Heading'
+import Button from '../components/Button'
 
-const PostList = styled.div``
+const Slogan = styled.div({
+  fontSize: 36,
+  fontWeight: 400,
+  lineHeight: 1.2,
+  marginTop: 40,
+  marginBottom: '1.5em'
+})
 
-const Post = styled.div`
-  margin-bottom: 50px;
+const IndexH2 = styled(H2)({
+  marginTop: '2.5em'
+})
 
-  @media (min-width: 768px) {
-    margin-bottom: 80px;
-  }
-`
-
-const Title = styled.h2`
-  font-size: 28px;
-  font-weight: 600;
-  margin: 0 0 8px;
-  line-height: 1.3em;
-
-  a {
-    text-decoration: none;
-    color: hsl(0, 0%, 0%);
-
-    &:hover {
-      text-decoration: underline;
-      color: #000;
-    }
-  }
-`
-
-const Meta = styled.div`
-  font-size: 16px;
-  margin-bottom: 1em;
-  line-height: 1em;
-  font-weight: 500;
-  color: hsl(0, 0%, 40%);
-`
-
-const Excerpt = styled.div`
-  margin-top: 15px;
-  font-size: 19px;
-  line-height: 1.6em;
-  color: #333;
-`
-
-const NewsletterWrapper = styled.div`
-  margin-top: 50px;
-
-  @media (min-width: 768px) {
-    margin-top: 120px;
-  }
-`
-
-type Props = {
-  data: {
-    allMarkdownRemark: {
-      edges: Array<{
-        node: {
-          fields: {
-            slug: string
-          }
-          frontmatter: {
-            title: string
-            date: string
-            description: string
-          }
-        }
-      }>
-    }
-    site: {
-      siteMetadata: {
-        siteTitle: string
-        siteDescription: string
-        siteUrl: string
-      }
-    }
-  }
-}
-
-const Index = ({ data }: Props) => {
+const Index = ({ data }: any) => {
   const posts = idx(data, _ => _.allMarkdownRemark.edges) || []
-
-  const { siteTitle, siteDescription, siteUrl }: any =
-    idx(data, _ => _.site.siteMetadata) || {}
 
   return (
     <Layout>
       <Helmet>
-        <title>{siteTitle}</title>
+        <title>Lars Graubner - JavaScript Developer</title>
         <meta name="robots" content="index,follow" />
-        <meta name="description" content={siteDescription} />
-        <meta property="og:title" content="Lars Graubner - Web Developer" />
-        <meta property="og:type" content="website" />
-
-        <meta property="og:url" content={siteUrl} />
-        <meta property="og:site_name" content="Lars Graubner" />
-        <meta property="og:description" content={siteDescription} />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@larsgraubner" />
-        <meta name="twitter:domain" content="larsgraubner.com" />
-        <meta name="twitter:title" content="Lars Graubner – Web Developer" />
-        <meta name="twitter:description" content={siteDescription} />
+        <meta
+          name="description"
+          content="I'm Lars Graubner, a web developer creating Apps with React and React Native. I like JavaScript and clean code. I'm a Husband and father."
+        />
       </Helmet>
-      <PostList>
-        {posts.map<JSX.Element>(post => (
-          <Post key={post.node.fields.slug}>
-            <Title>
-              <Link to={post.node.fields.slug}>
-                {post.node.frontmatter.title}
-              </Link>
-            </Title>
-            <Meta>{post.node.frontmatter.date}</Meta>
-            <Excerpt>{post.node.frontmatter.description}</Excerpt>
-          </Post>
+      <Slogan>
+        I'm a JavaScript devel­oper with a passion for well-crafted
+        appli­ca­tions.
+      </Slogan>
+      <P>I love React and Node.js</P>
+      <P>
+        As designer, devel­oper and en­tre­pre­neur with profes­sional
+        experi­ence I bring ideas to life. Most of the time I produce scalable
+        and elegant things for web, mobile and desktop.
+      </P>
+      <IndexH2>What I do</IndexH2>
+      <P>
+        I help clients to realize projects in a scalable way using React, React
+        Native, Node.js, Apollo, TypeScript and more.
+      </P>
+      <Button to="/contact">Work with me</Button>
+      <IndexH2>Writing</IndexH2>
+      <ul>
+        {posts.map((post: any) => (
+          <li>{post.node.frontmatter.title}</li>
         ))}
-      </PostList>
-      <NewsletterWrapper>
-        <NewsletterBox />
-      </NewsletterWrapper>
+      </ul>
     </Layout>
   )
 }
@@ -139,7 +71,10 @@ export const pageQuery = graphql`
         siteUrl
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 5
+    ) {
       edges {
         node {
           fields {
@@ -147,8 +82,6 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY ")
-            description
           }
         }
       }

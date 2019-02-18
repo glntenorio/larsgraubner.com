@@ -5,6 +5,8 @@ import Layout from '../components/Layout'
 import P from '../components/Paragraph'
 import { H1 } from '../components/Heading'
 import Link from '../components/Link'
+import Form, { Field } from '../components/Form'
+import TextInput from '../components/TextInput'
 
 const About = () => (
   <Layout>
@@ -24,6 +26,14 @@ const About = () => (
       <Link to="mailto:hello@larsgraubner.com">hello@larsgraubner.com</Link>. I
       look forward to hearing from you!
     </P>
+    <Form>
+      <Field label="Name" htmlFor="name">
+        <TextInput id="name" />
+      </Field>
+      <Field label="Email" htmlFor="email">
+        <TextInput id="email" />
+      </Field>
+    </Form>
   </Layout>
 )
 
