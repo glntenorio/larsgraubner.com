@@ -6,7 +6,9 @@ import idx from 'idx'
 
 import Layout from '../components/Layout'
 import P from '../components/Paragraph'
-import { H2, H3 } from '../components/Heading'
+import { H2 } from '../components/Heading'
+import Link from '../components/Link'
+import { Ul, Li } from '../components/List'
 import Button from '../components/Button'
 
 const Slogan = styled.div({
@@ -19,6 +21,14 @@ const Slogan = styled.div({
 
 const IndexH2 = styled(H2)({
   marginTop: '2.5em'
+})
+
+const IndexLink = styled(Link)({
+  color: 'hsl(0, 0%, 0%)',
+  textDecoration: 'none',
+  '&:hover': {
+    borderBottom: '1px solid currentColor'
+  }
 })
 
 const Index = ({ data }: any) => {
@@ -46,16 +56,27 @@ const Index = ({ data }: any) => {
       </P>
       <IndexH2>What I do</IndexH2>
       <P>
-        I help clients to realize projects in a scalable way using React, React
-        Native, Node.js, Apollo, TypeScript and more.
+        I bring ideas to life. I help clients to realize projects in a scalable
+        way using React, React Native, Node.js, Apollo, TypeScript and more.
       </P>
-      <Button to="/contact">Work with me</Button>
+      <P>
+        Interested in working with me? Read more about what I offer and send me
+        a message.
+      </P>
+
+      <Button to="/blog">Work with me</Button>
       <IndexH2>Writing</IndexH2>
-      <ul>
+      <P>Occasionally I write down my thoughts. Check out my blog for more.</P>
+      <Ul>
         {posts.map((post: any) => (
-          <li>{post.node.frontmatter.title}</li>
+          <Li>
+            <IndexLink to={post.node.fields.slug}>
+              {post.node.frontmatter.title}
+            </IndexLink>
+          </Li>
         ))}
-      </ul>
+      </Ul>
+      <Button to="/blog">All posts</Button>
     </Layout>
   )
 }

@@ -50,14 +50,6 @@ const Excerpt = styled.div`
   color: #333;
 `
 
-const NewsletterWrapper = styled.div`
-  margin-top: 50px;
-
-  @media (min-width: 768px) {
-    margin-top: 120px;
-  }
-`
-
 type Props = {
   data: {
     allMarkdownRemark: {
@@ -121,9 +113,7 @@ const Blog = ({ data }: Props) => {
           </Post>
         ))}
       </PostList>
-      <NewsletterWrapper>
-        <NewsletterBox />
-      </NewsletterWrapper>
+      <NewsletterBox />
     </Layout>
   )
 }

@@ -5,6 +5,8 @@ import P from './Paragraph'
 
 const Container = styled.section`
   position: relative;
+  background: hsla(0, 0%, 0%, 0.03);
+  padding: 40px;
 `
 
 const Heading = styled.h4`
@@ -131,7 +133,7 @@ class Newsletter extends React.Component<{}, State> {
           noValidate
         >
           <Heading>I maintain a newsletter to share what I learn</Heading>
-          <P>Never miss an article about React and Javascript.</P>
+          <P>Never miss an article about React and JavaScript.</P>
           <InputWrapper>
             <Input
               type="email"

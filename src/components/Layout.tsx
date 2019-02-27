@@ -161,8 +161,8 @@ const Layout = ({ children, index = false }: Props) => (
         <NameLink to="/">Lars Graubner</NameLink>
       </Name>
       <HeaderNav>
-        <NavLink to="/work">Work</NavLink>
         <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/work">Work</NavLink>
         <NavLink to="/contact">Contact</NavLink>
       </HeaderNav>
     </Header>
